@@ -1,7 +1,7 @@
 <script>
 import Icon from '../components/Icon.vue'
 export default {
-  name: 'BasicButton',
+  name: 'ButtonVue',
   props: {
     label: {
       type: String,

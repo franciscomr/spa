@@ -24,6 +24,10 @@ export default {
       type: String,
       default: 'blue'
     },
+    landscape: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     const inputColor = {
@@ -41,13 +45,15 @@ export default {
 }
 </script>
 <template>
-  <div class="py-1">
-    <label class="" :for="id">
+  <div class="py-1" :class="landscape ? 'w-full inline-flex items-center' : ''">
+    <label :for="id" :class="landscape ? 'min-w-max w-2/5' : ''">
       {{ label }}
     </label>
+
     <input class="w-full border border-gray-200 rounded-md p-1 border-b-2 focus:outline-none"
       :class="inputColor[color] || 'focus:border-b-blue-500'" :id="id" :type="type" :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)">
+
     <div class="h-3">
       <div v-show="message">
         <p v-for="error in message" class="text-sm text-red-500">
@@ -57,7 +63,6 @@ export default {
         <p class="text-sm text-red-500">
           {{ message }}
         </p>
-
         -->
       </div>
     </div>

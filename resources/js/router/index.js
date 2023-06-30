@@ -1,15 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
-import organizations from "./catalog/organizations";
+import auth from './middlewares/auth';
 import Background from '../components/Background.vue';
-import Dashboard from '../templates/Dashboard.vue';
-import DataTable from '../templates/DataTable.vue';
-import DataForm from '../templates/DataForm.vue';
-import Login from '../templates/Login.vue';
 import NotFound from '../components/NotFound.vue';
-import Notifications from '../templates/Notifications.vue';
-import Test from '../components/Test.vue';
+const Dashboard = () => import('../templates/Dashboard.vue')
+const Notifications = async () => await import('../templates/Notifications.vue')
+import login from './login/login.js';
+import organizations from '../router/catalog/organizations'
+import branches from '../router/catalog/branches';
+import departments from '../router/catalog/departments';
+import positions from '../router/catalog/positions';
+import employees from '../router/catalog/employees';
+
 
 const routes = [
+  ...login,
   {
     path: "/:catchAll(.*)",
     name: "NotFound",
@@ -21,28 +25,20 @@ const routes = [
     component: Background
   },
   {
-    path: "/login",
-    name: "login",
-    component: Login
-  },
-  {
     path: "/app",
     name: "home",
     component: Dashboard,
+    beforeEnter: auth,
     children: [
-
-      ...organizations
-
-      ,
+      ...organizations,
+      ...branches,
+      ...departments,
+      ...positions,
+      ...employees,
       {
         path: "notificaciones",
-        name: "notifications",
+        name: "notificaciones",
         component: Notifications,
-      },
-      {
-        path: "sucursales",
-        name: "branches",
-        component: Test,
       },
     ]
 

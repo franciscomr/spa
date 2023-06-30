@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'Logo',
+  name: 'LogoVue',
   props: {
     src: {
       type: String,

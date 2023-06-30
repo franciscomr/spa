@@ -1,7 +1,8 @@
 <script>
-
+import { ref, onMounted, watch } from 'vue';
+import getIdAndName from '../functions/getIdAndName';
 export default {
-  name: 'FormSelect',
+  name: 'FormSelectVue',
   props: {
     id: {
       type: String,
@@ -11,7 +12,9 @@ export default {
       type: String,
       default: 'label'
     },
-    name: {
+    resource: {
+      type: String,
+      default: null
     },
     modelValue: {
       type: [String, Number],
@@ -19,24 +22,51 @@ export default {
     },
     message: {
     },
-    values: {}
+    values: {
+    },
+    landscape: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    const data = ref({})
+    onMounted(async () => {
+      if (props.resource !== null) {
+        data.value = await getIdAndName(props.resource);
+      }
+    }
+    )
+
+    watch(() => props.id, async (after, before) => {
+
+      if (props.resource !== null) {
+        data.value = await getIdAndName(props.resource);
+      }
+    });
+
+    return { data }
   }
 }
 </script>
 <template>
-  <div class="py-1">
-    <label class="block font-Nunito text-md  tracking-wide text-gray-700" :for="id">
+  <div class="py-1" :class="landscape ? 'w-full inline-flex items-center' : ''">
+    <label :for="id" :class="landscape ? 'min-w-max w-2/5' : ''">
       {{ label }}
     </label>
-    <select :id="id" class="px-4 py-2 w-full rounded-md border" :value="modelValue" required
-      @change="$emit('update:modelValue', $event.target.value)">
-      <option v-for="(select, index) in values" :key="index" :value="index">
+    <select class="w-full border border-gray-200 rounded-md p-1 border-b-2 focus:outline-none" :id="id"
+      :value="modelValue" @change="$emit('update:modelValue', $event.target.value)">
+      <option v-if="resource !== null" v-for="(select, index) in data" :key="index" :value="index">
+        {{ select }}
+      </option>
+
+      <option v-else v-for="(select, index) in values" :value="index">
         {{ select }}
       </option>
     </select>
     <div class="h-2">
       <div v-show="message">
-        <p class="text-xs text-red-600 dark:text-red-400">
+        <p class="text-sm text-red-500">
           {{ message }}
         </p>
       </div>

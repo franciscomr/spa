@@ -42,11 +42,11 @@ export default {
 </script>
 <template>
   <div class="py-1 w-full inline-flex">
-    <label class="min-w-max" :for="id">
+    <label class="min-w-max w-2/5 flex items-center" :for="id">
       {{ label }}
     </label>
-    <div class=" w-full flex justify-end">
-      <input class="border border-gray-200 rounded-md p-1 border-b-2 focus:outline-none"
+    <div class=" w-full flex justify-end items-center">
+      <input class="w-full border border-gray-200 rounded-md p-1 border-b-2 focus:outline-none"
         :class="inputColor[color] || 'focus:border-b-blue-500'" :id="id" :type="type" :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)">
     </div>

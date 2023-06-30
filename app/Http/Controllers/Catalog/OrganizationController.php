@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Catalog\Organization;
 use App\Http\Requests\Catalog\OrganizationRequest;
 use App\Http\Resources\Catalog\OrganizationResource;
+use App\Http\Resources\Catalog\OrganizationExport;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -33,27 +34,35 @@ class OrganizationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Organization $organization)
+    public function show($id)
     {
-        //
+        $organization = Organization::findOrFail($id);
+        return response()->json([
+            'data' =>  OrganizationResource::make($organization)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Organization $organization)
+    public function update(OrganizationRequest $request, Organization $organization)
     {
-        //
+        Organization::where('id', $organization->id)->update($request->validated());
+        $organizationUpdated = Organization::findOrFail($organization->id);
+        return response()->json([
+            OrganizationResource::make($organizationUpdated)
+        ]);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Export search data to Excel .
      */
     public function export()
     {
         $organizations = Organization::applySortAndFilter(request('sort'), request('filter'))->get();
+        $export = OrganizationExport::collection($organizations);
         return response()->json(
-            ['data' => $organizations]
+            ['data' => $export]
         );
     }
 }

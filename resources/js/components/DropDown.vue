@@ -10,14 +10,30 @@ export default {
       type: String,
       default: 'Label'
     },
+    color: {
+      type: String,
+      default: 'blue'
+    },
     icon: {
       type: String,
       default: 'emoticon_poop'
     }
   },
   data() {
+    const borderColor = {
+      default: 'hover:border-gray-500',
+      gray: 'hover:border-gray-500',
+      red: 'hover:border-red-500',
+      orange: 'hover:border-orange-500',
+      yellow: 'hover:border-yellow-500',
+      green: 'hover:border-green-500',
+      blue: 'hover:border-blue-500',
+      indigo: 'hover:border-indigo-500',
+      violet: 'hover:border-violet-500',
+    }
+
     return {
-      showList: false
+      showList: false, borderColor
     }
   }
 }
@@ -25,7 +41,8 @@ export default {
 
 <template>
   <div @click="showList = !showList"
-    class="flex items-center  px-1 py-2 border-l-4 border-transparent hover:border-blue-500 cursor-pointer hover:bg-gray-200">
+    class="flex items-center py-2 border-l-4 border-transparent cursor-pointer hover:bg-gray-200"
+    :class="borderColor[color] || 'hover:border-blue-500'">
     <span>
       <Icon :name="icon" :size="'xl'" />
     </span>

@@ -1,6 +1,7 @@
 
-export default async function search(routeName) {
+export default async function getSingleRecord(routeName) {
   let response = {}
+  await axios.get('/sanctum/csrf-cookie')
   await axios.get(routeName)
     .then(res => {
       response.data = res.data.data

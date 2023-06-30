@@ -1,5 +1,46 @@
-import DataTable from '../../templates/DataTable.vue';
-import DataForm from '../../templates/DataForm.vue';
+const DataTable = () => import('../../templates/DataTable.vue')
+const DataForm = () => import('../../templates/DataForm.vue')
+
+const TABLE_ATTRIBUTES = [
+  { label: 'ID', id: 'id' },
+  { label: 'Organización', id: 'name' },
+  { label: 'Razón Social', id: 'businessName' },
+  { label: 'Direccion', id: 'address', },
+  { label: 'Poblacion', id: 'city' },
+  { label: 'Estado', id: 'state' },
+  { label: 'C P', id: 'postalCode' },
+  { label: 'Creado Por', id: 'createdBy', hidden: true },
+  { label: 'Creado a las', id: 'createdAt', filter: 'date' },
+  { label: 'Actualizado Por', id: 'updatedBy', hidden: true },
+  { label: 'Actualizado a las', id: 'updatedAt', filter: 'date' },
+];
+
+const FORM_ATTRIBUTES = [
+  {
+    label: 'Nombre de la Organización', id: 'name', type: 'input',
+    propieties: { type: 'text', required: true }
+  },
+  {
+    label: 'Razón Social', id: 'businessName', type: 'input',
+    propieties: { type: 'text', required: true }
+  },
+  {
+    label: 'Dirección', id: 'address', type: 'input',
+    propieties: { type: 'text', required: true }
+  },
+  {
+    label: 'Ciudad / Población', id: 'city', type: 'input',
+    propieties: { type: 'text', required: true }
+  },
+  {
+    label: 'Estado', id: 'state', type: 'input', propieties: { type: 'text', required: true }
+  },
+  {
+    label: 'Codigo Postal', id: 'postalCode', type: 'input',
+    propieties: { type: 'text', required: true }
+  }
+]
+
 export default [
   {
     path: "organizations",
@@ -7,19 +48,8 @@ export default [
     component: DataTable,
     props: {
       title: 'Organizaciones',
-      fields: [
-        { label: 'ID', name: 'id' },
-        { label: 'Organizacion', name: 'name' },
-        { label: 'Razon Social', name: 'businessName' },
-        { label: 'Direccion', name: 'address', },
-        { label: 'Poblacion', name: 'city' },
-        { label: 'Estado', name: 'state' },
-        { label: 'C P', name: 'postalCode' },
-        { label: 'Creado Por', name: 'createdBy', hidden: true },
-        { label: 'Creado a las', name: 'createdAt', filter: 'date' },
-        { label: 'Actualizado Por', name: 'updatedBy', hidden: true },
-        { label: 'Actualizado a las', name: 'updatedAt', filter: 'date' },
-      ],
+      resource: 'organizations',
+      attributes: TABLE_ATTRIBUTES,
       actions: [
         { name: 'edit', icon: 'pencil_outline', route: 'organizations.edit', title: 'Editar Registro' },
       ]
@@ -32,62 +62,7 @@ export default [
     props: {
       title: 'Organizaciones',
       resource: 'organizations',
-      fields: [
-        {
-          label: 'Nombre de la Organización',
-          name: 'name',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Razón Social',
-          name: 'businessName',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Dirección',
-          name: 'address',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Ciudad / Población',
-          name: 'city',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Estado',
-          name: 'state',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Codigo Postal',
-          name: 'postalCode',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        }
-      ]
+      attributes: FORM_ATTRIBUTES
     }
   },
   {
@@ -98,62 +73,7 @@ export default [
       title: 'Organizaciones',
       resource: 'organizations',
       is_new_record: false,
-      fields: [
-        {
-          label: 'Nombre de la Organización',
-          name: 'name',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Razón Social',
-          name: 'businessName',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Dirección',
-          name: 'address',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Ciudad / Población',
-          name: 'city',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Estado',
-          name: 'state',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        },
-        {
-          label: 'Codigo Postal',
-          name: 'postalCode',
-          type: 'input',
-          propieties: {
-            type: 'text',
-            required: true
-          }
-        }
-      ]
+      attributes: FORM_ATTRIBUTES
     }
   }
 ]

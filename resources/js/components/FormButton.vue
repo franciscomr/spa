@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'FormButton',
+  name: 'FormButtonVue',
   props: {
     label: {
       type: String,
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <button type="sumbmit" class="w-full py-1 px-10 rounded-md border border-b-2"
+  <button type="submit" class="w-full py-1 px-10 rounded-md border border-b-2"
     :class="buttonColor[color] || 'bg-red-400'">
     <span class="">{{ label }}</span>
   </button>

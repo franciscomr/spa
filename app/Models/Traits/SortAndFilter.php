@@ -41,7 +41,11 @@ trait SortAndFilter
         if (!collect($this->allowedFilters)->contains($filter)) {
           abort(400, "Filter parameter {$filter} is not allowed");
         }
-        $query->where($filter, 'like', '%' . $value . '%');
+        if (collect($this->relationshipFields)->contains($filter) || $filter === 'id' && $value !== null) {
+          $query->where($filter, $value);
+        } else {
+          $query->where($filter, 'like', '%' . $value . '%');
+        }
       }
     }
   }

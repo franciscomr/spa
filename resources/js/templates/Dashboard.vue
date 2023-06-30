@@ -12,13 +12,6 @@ export default {
     Icon, DropDown, Link
   },
   setup() {
-
-    onMounted(() => {
-      if (!store.state.user.isAuthenticated) {
-        isAuthenticated()
-      }
-    });
-
     const menu = {
 
       'Catalog': {
@@ -28,57 +21,20 @@ export default {
         'links': {
           'Organizaciones': 'organizations',
           'Sucursales': 'branches',
-          'Organizacione': 'organizations',
-          'Sucursale': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches'
+          'Departamentos': 'departments',
+          'Puestos': 'positions',
+          'Personal': 'employees',
         }
       },
-      'DeviceInventory': {
-        'title': 'Catalogo',
-        'icon': 'book_open_outline',
-        'color': 'red',
-        'links': {
-          'Organizaciones': 'organizations',
-          'Sucursales': 'branches',
-          'Organizacione': 'organizations',
-          'Sucursale': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches',
-          'Sucursale': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches',
-          'Organcion': 'organizations',
-          'Sucursal': 'branches'
-        }
-      },
-      'ServiceDesk': {
-        'title': 'Mesa de Servicios',
-        'icon': 'monitor_cellphone',
-        'color': 'green',
-        'links': {
-          'Organizaciones': 'organizations',
-          'Sucursales': 'branches',
-          'Organizacione': 'organizations',
-          'Sucursale': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches',
-          'Sucursale': 'branches',
-          'Organizacion': 'organizations',
-          'Sucursal': 'branches'
-        }
-      }
     }
     return { menu, logout }
   }
 }
 </script>
 <template>
-  <div class="flex h-full backdrop-blur-sm bg-white/95 rounded-lg">
-    <div class="sm:w-72 md:block hidden shrink-0 py-8 px-3 space-y-6">
-      <div class="flex items-center  w-full">
+  <div class="flex h-full backdrop-blur-sm bg-white/95 rounded-lg p-4 ">
+    <div class="sm:w-72 md:block hidden shrink-0 space-y-4 py-2">
+      <div class="flex items-center w-full">
         <img src="/images/avatar.jpeg" class="rounded-full h-16 w-16" alt="Avatar" />
         <div class="flex flex-col ml-2 truncate ">
           <span class="font-medium">{{ $store.state.user.data.name }}</span>
@@ -86,10 +42,10 @@ export default {
         </div>
       </div>
 
-      <div class="h-4/5 space-y-2 overflow-y-auto">
-        <Link :label="'Notificaciones'" :route_name="'notifications'" :icon="'bell_outline'" :badge="'16'" />
+      <div class="h-5/6 space-y-2 overflow-y-auto">
+        <Link :label="'Notificaciones'" :route_name="'notificaciones'" :icon="'bell_outline'" :badge="'16'" />
         <div v-for=" userMenu  in  menu " class="overflow-y-auto">
-          <DropDown :icon="userMenu.icon" :label="userMenu.title">
+          <DropDown :icon="userMenu.icon" :label="userMenu.title" :color="'violet'">
             <template #content>
               <div v-for="( link, index ) in  userMenu.links " :key="index">
                 <Link :label="index" :route_name="link" />
@@ -110,7 +66,7 @@ export default {
       </div>
 
     </div>
-    <div class="w-full py-8 px-3 overflow-x-auto">
+    <div class="w-full overflow-x-auto p-2">
       <router-view />
     </div>
   </div>

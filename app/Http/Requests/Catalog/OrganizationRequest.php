@@ -48,18 +48,32 @@ class OrganizationRequest extends FormRequest
     protected function prepareForValidation()
     {
         if (request()->routeIs('organizations.store')) {
-            $this->merge(
+            $this->merge(array_replace(
+                $this->all(),
                 [
+                    'name' => $this->input('attributes.name'),
+                    'businessName' => $this->input('attributes.businessName'),
+                    'address' => $this->input('attributes.address'),
+                    'city' => $this->input('attributes.city'),
+                    'state' => $this->input('attributes.state'),
+                    'postalCode' => $this->input('attributes.postalCode'),
                     'createdBy' => Auth::user()->username,
                     'updatedBy' => Auth::user()->username,
                 ]
-            );
+            ));
         } elseif (request()->routeIs('organizations.update')) {
-            $this->merge(
+            $this->merge(array_replace(
+                $this->all(),
                 [
+                    'businessName' => $this->input('attributes.businessName'),
+                    'name' => $this->input('attributes.name'),
+                    'address' => $this->input('attributes.address'),
+                    'city' => $this->input('attributes.city'),
+                    'state' => $this->input('attributes.state'),
+                    'postalCode' => $this->input('attributes.postalCode'),
                     'updatedBy' => Auth::user()->username,
                 ]
-            );
+            ));
         }
     }
 }

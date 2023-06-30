@@ -52,7 +52,7 @@ class Organization extends Model
         'updatedAt',
     ];
 
-    public function branchs(): HasMany
+    public function branches(): HasMany
     {
         return $this->hasMany(Branch::class);
     }

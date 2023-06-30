@@ -3,8 +3,6 @@ import store from '../store';
 const isAuthenticated = async () => {
   await axios.get(route('get.user'))
     .then(res => {
-      //console.log(res.data)
-      console.log('authencicate')
       store.dispatch('storeUser', res.data)
     })
     .catch(err => {

@@ -22,10 +22,21 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'username' => 'required | string | min:2 ',
-            'password' => 'required | string | min:2 ',
+            'username' => 'required', 'string', 'min:2 ',
+            'password' => 'required', 'string', 'min:2 ',
         ];
 
-        return $rules;
+        return  $rules;
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge(array_replace(
+            $this->all(),
+            [
+                'username' => $this->input('attributes.username'),
+                'password' => $this->input('attributes.password'),
+            ]
+        ));
     }
 }
