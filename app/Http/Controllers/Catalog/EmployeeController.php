@@ -48,16 +48,16 @@ class EmployeeController extends Controller
     public function update(EmployeeRequest $request, Employee $employee)
     {
         Employee::where('id', $employee->id)->update($request->validated());
-        $employeeUpdated = Employee::findOrFail($employee->id);
+        $employee_updated = Employee::findOrFail($employee->id);
         return response()->json([
-            EmployeeResource::make($employeeUpdated)
+            EmployeeResource::make($employee_updated)
         ]);
     }
 
     /**
      * Export the specified resource.
      */
-    public function export(Employee $employee)
+    public function export()
     {
         $employees = Employee::applySortAndFilter(request('sort'), request('filter'))->get();
         $export = EmployeeExport::collection($employees);

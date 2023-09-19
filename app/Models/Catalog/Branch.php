@@ -60,11 +60,4 @@ class Branch extends Model
     {
         return $this->belongsTo(Organization::class);
     }
-
-    public function scopeFilterOrganization($query, $id)
-    {
-        if ($id !== null) {
-            return $query->where('organization_id', $id);
-        }
-    }
 }

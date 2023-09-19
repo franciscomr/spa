@@ -22,6 +22,8 @@ import LifebuoyIcon from 'vue-material-design-icons/Lifebuoy.vue';
 import LogoutVariantIcon from 'vue-material-design-icons/LogoutVariant.vue';
 import MonitorCellphoneIcon from 'vue-material-design-icons/MonitorCellphone.vue';
 import NotebookOutlineIcon from 'vue-material-design-icons/NotebookOutline.vue';
+import DomainIcon from 'vue-material-design-icons/Domain.vue';
+import PaperclipIcon from 'vue-material-design-icons/Paperclip.vue';
 import PencilIcon from 'vue-material-design-icons/Pencil.vue';
 import PencilOutlineIcon from 'vue-material-design-icons/PencilOutline.vue';
 import PlusIcon from 'vue-material-design-icons/Plus.vue';
@@ -50,13 +52,12 @@ export default {
   },
   components: {
     AccountIcon, AlertIcon, AlertOctagonIcon, ArrowUpThinIcon, ArrowDownThinIcon,
-    BellOutlineIcon, BookOpenOutlineIcon, BookshelfIcon,
-    BriefcaseOutlineIcon, CheckboxMarkedCircleOutlineIcon, ChevronRightIcon, ChevronUpIcon,
-    ChevronDownIcon, CogOutlineIcon, EyeIcon,
-    EyeOutlineIcon, EmoticonPoopIcon, FilterOutlineIcon, InformationIcon,
-    LifebuoyIcon, LogoutVariantIcon, MonitorCellphoneIcon,
-    NotebookOutlineIcon, PencilIcon, PencilOutlineIcon,
-    PlusIcon, PowerIcon, SortVariantIcon,
+    BellOutlineIcon, BookOpenOutlineIcon, BookshelfIcon, BriefcaseOutlineIcon,
+    CheckboxMarkedCircleOutlineIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon,
+    CogOutlineIcon, EyeIcon, EyeOutlineIcon, EmoticonPoopIcon, FilterOutlineIcon,
+    InformationIcon, LifebuoyIcon, LogoutVariantIcon, MonitorCellphoneIcon,
+    NotebookOutlineIcon, DomainIcon, PaperclipIcon, PencilIcon,
+    PencilOutlineIcon, PlusIcon, PowerIcon, SortVariantIcon,
     TrayArrowDownIcon, WindowCloseIcon
   },
   setup() {
@@ -84,6 +85,8 @@ export default {
       logout_variant: 'logout-variant-icon',
       monitor_cellphone: 'monitor-cellphone-icon',
       notebook_outline: 'notebook-outline-icon',
+      domain: 'domain-icon',
+      paperclip: 'paperclip-icon',
       pencil: 'pencil-icon',
       pencil_outline: 'pencil-outline-icon',
       plus: 'plus-icon',

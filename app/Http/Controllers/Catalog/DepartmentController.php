@@ -48,9 +48,9 @@ class DepartmentController extends Controller
     public function update(DepartmentRequest $request, Department $department)
     {
         Department::where('id', $department->id)->update($request->validated());
-        $departmentUpdated = Department::findOrFail($department->id);
+        $department_updated = Department::findOrFail($department->id);
         return response()->json([
-            DepartmentResource::make($departmentUpdated)
+            DepartmentResource::make($department_updated)
         ]);
     }
 

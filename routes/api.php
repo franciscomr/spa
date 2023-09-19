@@ -9,6 +9,14 @@ use App\Http\Controllers\Utils\SelectController;
 use App\Http\Controllers\Catalog\DepartmentController;
 use App\Http\Controllers\Catalog\PositionController;
 use App\Http\Controllers\Catalog\EmployeeController;
+use App\Http\Controllers\Catalog\CategoryController;
+use App\Http\Controllers\Catalog\BrandController;
+use App\Http\Controllers\Catalog\EquipmentController;
+use App\Http\Controllers\Catalog\EquipmentModelController;
+use App\Http\Controllers\Catalog\PhonePlanController;
+use App\Http\Controllers\Catalog\ContractController;
+
+use App\Http\Controllers\AssetManagement\AssetController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -68,6 +76,64 @@ Route::controller(EmployeeController::class)->group(function () {
     route::get('employees/export', 'export')->name('employees.export');
     route::get('employees/{id}', 'show')->name('employees.show');
     route::patch('employees/{employee}', 'update')->name('employees.update');
+});
+
+Route::controller(CategoryController::class)->group(function () {
+    route::get('categories', 'index')->name('categories.index');
+    route::post('categories', 'store')->name('categories.store');
+    route::get('categories/export', 'export')->name('categories.export');
+    route::get('categories/{id}', 'show')->name('categories.show');
+    route::patch('categories/{category}', 'update')->name('categories.update');
+});
+
+Route::controller(BrandController::class)->group(function () {
+    route::get('brands', 'index')->name('brands.index');
+    route::post('brands', 'store')->name('brands.store');
+    route::get('brands/export', 'export')->name('brands.export');
+    route::get('brands/{id}', 'show')->name('brands.show');
+    route::patch('brands/{brand}', 'update')->name('brands.update');
+});
+
+Route::controller(EquipmentController::class)->group(function () {
+    route::get('equipment', 'index')->name('equipment.index');
+    route::post('equipment', 'store')->name('equipment.store');
+    route::get('equipment/export', 'export')->name('equipment.export');
+    route::get('equipment/{id}', 'show')->name('equipment.show');
+    route::patch('equipment/{equipment}', 'update')->name('equipment.update');
+});
+
+Route::controller(EquipmentModelController::class)->group(function () {
+    route::get('equipmentModels', 'index')->name('equipmentModels.index');
+    route::post('equipmentModels', 'store')->name('equipmentModels.store');
+    route::get('equipmentModels/export', 'export')->name('equipmentModels.export');
+    route::get('equipmentModels/{id}', 'show')->name('equipmentModels.show');
+    route::patch('equipmentModels/{equipmentModel}', 'update')->name('equipmentModels.update');
+    route::post('equipmentModels/attach/{id}', 'attach')->name('equipmentModels.attach');
+});
+
+
+Route::controller(PhonePlanController::class)->group(function () {
+    route::get('phonePlans', 'index')->name('phonePlans.index');
+    route::post('phonePlans', 'store')->name('phonePlans.store');
+    route::get('phonePlans/export', 'export')->name('phonePlans.export');
+    route::get('phonePlans/{id}', 'show')->name('phonePlans.show');
+    route::patch('phonePlans/{phonePlan}', 'update')->name('phonePlans.update');
+});
+
+Route::controller(ContractController::class)->group(function () {
+    route::get('contracts', 'index')->name('contracts.index');
+    route::post('contracts', 'store')->name('contracts.store');
+    route::get('contracts/export', 'export')->name('contracts.export');
+    route::get('contracts/{id}', 'show')->name('contracts.show');
+    route::patch('contracts/{contract}', 'update')->name('contracts.update');
+});
+
+Route::controller(AssetController::class)->group(function () {
+    route::get('assets', 'index')->name('assets.index');
+    route::post('assets', 'store')->name('assets.store');
+    route::get('assets/export', 'export')->name('assets.export');
+    route::get('assets/{id}', 'show')->name('assets.show');
+    route::patch('assets/{asset}', 'update')->name('assets.update');
 });
 
 Route::controller(SelectController::class)->group(function () {

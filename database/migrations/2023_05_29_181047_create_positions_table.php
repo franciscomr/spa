@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('department_id')->constrained();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('createdBy');
             $table->string('updatedBy');
             $table->timestamp('createdAt')->useCurrent();

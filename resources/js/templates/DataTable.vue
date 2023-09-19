@@ -181,7 +181,7 @@ export default {
       <table class="w-full  border-separate border-spacing-y-1.5">
         <thead>
           <tr class="bg-white h-14 hover:bg-gray-50">
-            <th v-for="attribute in attributes" class="text-sm font-medium min-w-max text-left">
+            <th v-for="attribute in attributes" class="text-sm font-medium min-w-max text-left pl-2">
               <div @click="sort(attribute.id)" class="cursor-pointer flex items-center">
                 <span class="">{{ attribute.label }}</span>
                 <div class="w-4">
@@ -194,7 +194,7 @@ export default {
                 </div>
               </div>
             </th>
-            <th v-for="relationship in relationships" class="text-sm font-medium min-w-max text-left">
+            <th v-for="relationship in relationships" class="text-sm font-medium min-w-max text-left pl-2">
               {{ relationship.label }}
             </th>
             <th v-if="actions"></th>
@@ -202,10 +202,10 @@ export default {
         </thead>
         <tbody>
           <tr v-for="data in dataReceived" class="bg-white h-12 hover:bg-gray-50">
-            <td v-for="attribute in attributes" class="text-sm min-w-max">
+            <td v-for="attribute in attributes" class="text-sm min-w-max pl-2">
               {{ data['attributes'][attribute.id] }}
             </td>
-            <td v-for="relationship in relationships" class="text-sm min-w-max">
+            <td v-for="relationship in relationships" class="text-sm min-w-max pl-2">
               {{ data['relationships'][relationship.resource]['data']['name'] }}
             </td>
             <td v-if="actions" class="space-x-2 mx-auto">
@@ -227,9 +227,14 @@ export default {
       </table>
     </div>
 
-    <div v-if="dataReceived.length > 0" class="flex justify-end">
-      <div class=" space-x-2 inline-flex items-center justify-center">
-        <div v-for="page in pagination.links" class="">
+    <div v-if="dataReceived.length > 0" class="inline-flex items-center w-full">
+      <div class="text-sm min-w-max">
+        <span>{{ pagination.from }} - {{ pagination.to }} <span class="px-1">de</span> {{ pagination.total
+        }} Resultados</span>
+      </div>
+
+      <div class="w-full flex justify-end space-x-2">
+        <div v-for="page in pagination.links">
           <div @click="changePageDisplayed(page.url)"
             class="bg-white border border-gray-300 text-center text-sm p-2 rounded-md"
             :class="page.active ? 'bg-gray-100 text-blue-500' : '' || page.url !== null ? 'cursor-pointer' : ''">
@@ -239,11 +244,6 @@ export default {
           </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="dataReceived.length > 0" class="text-sm">
-      <span>{{ pagination.from }} - {{ pagination.to }} <span class="px-1">de</span> {{ pagination.total
-      }} Resultados</span>
     </div>
 
     <Transition>

@@ -15,8 +15,8 @@ export default {
     const menu = {
 
       'Catalog': {
-        'title': 'Catálogos',
-        'icon': 'notebook_outline',
+        'title': 'Organizaciones',
+        'icon': 'domain',
         'color': 'blue',
         'links': {
           'Organizaciones': 'organizations',
@@ -24,6 +24,27 @@ export default {
           'Departamentos': 'departments',
           'Puestos': 'positions',
           'Personal': 'employees',
+        }
+      },
+      'Catalog2': {
+        'title': 'Activos',
+        'icon': 'monitor_cellphone',
+        'color': 'blue',
+        'links': {
+          'Contratos': 'contracts',
+          'Categorias': 'categories',
+          'Equipos': 'equipment',
+          'Marcas': 'brands',
+          'Modelos': 'equipmentModels',
+          'Planes': 'phonePlans',
+        }
+      },
+      'AssetManagement': {
+        'title': 'Activos',
+        'icon': 'monitor_cellphone',
+        'color': 'blue',
+        'links': {
+          'Activos': 'assets',
         }
       },
     }

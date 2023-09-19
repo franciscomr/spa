@@ -10,6 +10,13 @@ import branches from '../router/catalog/branches';
 import departments from '../router/catalog/departments';
 import positions from '../router/catalog/positions';
 import employees from '../router/catalog/employees';
+import categories from '../router/catalog/categories';
+import brands from '../router/catalog/brands';
+import equipments from '../router/catalog/equipments';
+import equipmentModels from '../router/catalog/equipmentModels';
+import phonePlans from "../router/catalog/phonePlans";
+import contracts from '../router/catalog/contracts';
+import assets from '../router/assetManagement/assets';
 
 
 const routes = [
@@ -35,6 +42,13 @@ const routes = [
       ...departments,
       ...positions,
       ...employees,
+      ...categories,
+      ...brands,
+      ...equipments,
+      ...equipmentModels,
+      ...phonePlans,
+      ...contracts,
+      ...assets,
       {
         path: "notificaciones",
         name: "notificaciones",

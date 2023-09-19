@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->foreignId('organization_id')->constrained();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('address');
             $table->string('city');
             $table->string('state');

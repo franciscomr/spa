@@ -36,9 +36,9 @@ class PositionController extends Controller
      */
     public function show($id)
     {
-        $branch = Position::findOrFail($id);
+        $position = Position::findOrFail($id);
         return response()->json([
-            'data' =>  PositionResource::make($branch)
+            'data' =>  PositionResource::make($position)
         ]);
     }
 
@@ -48,9 +48,9 @@ class PositionController extends Controller
     public function update(PositionRequest $request, Position $position)
     {
         Position::where('id', $position->id)->update($request->validated());
-        $branchUpdated = Position::findOrFail($position->id);
+        $position_updated = Position::findOrFail($position->id);
         return response()->json([
-            PositionResource::make($branchUpdated)
+            PositionResource::make($position_updated)
         ]);
     }
 

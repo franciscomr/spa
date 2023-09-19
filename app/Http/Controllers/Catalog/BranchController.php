@@ -36,9 +36,9 @@ class BranchController extends Controller
     public function update(BranchRequest $request, Branch $branch)
     {
         Branch::where('id', $branch->id)->update($request->validated());
-        $branchUpdated = Branch::findOrFail($branch->id);
+        $branch_updated = Branch::findOrFail($branch->id);
         return response()->json([
-            BranchResource::make($branchUpdated)
+            BranchResource::make($branch_updated)
         ]);
     }
 

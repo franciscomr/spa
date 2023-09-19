@@ -23,11 +23,6 @@ class BranchRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'organization_id' => 'required | exists:organizations,id',
-            'address' => 'required | string | min:2 ',
-            'city' => 'required | string | min:2 ',
-            'state' => 'required | string | min:2 ',
-            'postalCode' => 'required | numeric | digits:5',
             'updatedBy' => 'required'
         ];
 
@@ -38,7 +33,7 @@ class BranchRequest extends FormRequest
             ];
         } elseif (request()->routeIs('branches.update')) {
             $rules += [
-                'name' => 'required | string | min:2 | unique:branches,name,' . $this->branch->id,
+                'name' => 'required |string | min:2 | unique:branches,name,' . $this->branch->id,
             ];
         }
         return $rules;
@@ -50,12 +45,7 @@ class BranchRequest extends FormRequest
             $this->merge(array_replace(
                 $this->all(),
                 [
-                    'organization_id' => $this->input('relationships.organization_id'),
                     'name' => $this->input('attributes.name'),
-                    'address' => $this->input('attributes.address'),
-                    'city' => $this->input('attributes.city'),
-                    'state' => $this->input('attributes.state'),
-                    'postalCode' => $this->input('attributes.postalCode'),
                     'createdBy' => Auth::user()->username,
                     'updatedBy' => Auth::user()->username,
                 ]
@@ -64,12 +54,7 @@ class BranchRequest extends FormRequest
             $this->merge(array_replace(
                 $this->all(),
                 [
-                    'organization_id' => $this->input('relationships.organization_id'),
                     'name' => $this->input('attributes.name'),
-                    'address' => $this->input('attributes.address'),
-                    'city' => $this->input('attributes.city'),
-                    'state' => $this->input('attributes.state'),
-                    'postalCode' => $this->input('attributes.postalCode'),
                     'updatedBy' => Auth::user()->username,
                 ]
             ));

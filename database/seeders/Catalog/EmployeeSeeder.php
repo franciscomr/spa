@@ -17,7 +17,7 @@ class EmployeeSeeder extends Seeder
         Employee::create(
             [
                 'branch_id' => 4,
-                'position_id' => 23,
+                'position_id' => 15,
                 'employeeId' => 'E03583',
                 'name' => 'Francisco',
                 'firstSurname' => 'Martinez',
@@ -30,7 +30,7 @@ class EmployeeSeeder extends Seeder
         Employee::create(
             [
                 'branch_id' => 2,
-                'position_id' => 23,
+                'position_id' => 15,
                 'employeeId' => 'E04460',
                 'name' => 'Marco Antonio',
                 'firstSurname' => 'Panales',

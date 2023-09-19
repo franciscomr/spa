@@ -10,6 +10,17 @@ use Database\Seeders\Catalog\DepartmentSeeder;
 use Database\Seeders\Catalog\PositionSeeder;
 use Database\Seeders\Catalog\EmployeeSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\Catalog\CategorySeeder;
+use Database\Seeders\Catalog\BrandSeeder;
+use Database\Seeders\Catalog\EquipmentSeeder;
+use Database\Seeders\Catalog\EquipmentModelSeeder;
+use Database\Seeders\Catalog\PhoneCompanySeeder;
+use Database\Seeders\Catalog\PhonePlanSeeder;
+use Database\Seeders\Catalog\ContractTypeSeeder;
+use Database\Seeders\Catalog\ContactSeeder;
+use Database\Seeders\AssetManagement\AssetConditionSeeder;
+use Database\Seeders\AssetManagement\AssetDisposalReasonSeeder;
+use Database\Seeders\AssetManagement\AssetSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,7 +42,18 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             PositionSeeder::class,
             EmployeeSeeder::class,
-            UserSeeder::class
+            CategorySeeder::class,
+            BrandSeeder::class,
+            EquipmentSeeder::class,
+            EquipmentModelSeeder::class,
+            UserSeeder::class,
+            PhoneCompanySeeder::class,
+            PhonePlanSeeder::class,
+            ContractTypeSeeder::class,
+            ContactSeeder::class,
+            AssetConditionSeeder::class,
+            AssetDisposalReasonSeeder::class,
+            AssetSeeder::class
         ]);
     }
 }

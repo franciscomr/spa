@@ -48,9 +48,9 @@ class OrganizationController extends Controller
     public function update(OrganizationRequest $request, Organization $organization)
     {
         Organization::where('id', $organization->id)->update($request->validated());
-        $organizationUpdated = Organization::findOrFail($organization->id);
+        $organization_updated = Organization::findOrFail($organization->id);
         return response()->json([
-            OrganizationResource::make($organizationUpdated)
+            OrganizationResource::make($organization_updated)
         ]);
     }
 

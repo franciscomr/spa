@@ -47,7 +47,7 @@ class EmployeeRequest extends FormRequest
                 'name' => [
                     'required',
                     Rule::unique('employees')
-                        ->where('id', '<>', $this->id)
+                        ->ignore($this->employee->id)
                         ->where('name', $this->name)
                         ->where('firstSurname', $this->firstSurname)
                         ->where('secondSurname', $this->secondSurname)
